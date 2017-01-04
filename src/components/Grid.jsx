@@ -31,9 +31,7 @@ export const Row = ({ cells, row }) => (
 
 export const Grid = ({ grid }) => (
   <div>
-    {grid.map((cells, row) => {
-      console.log(grid)
-      return <Row key={`row${row}`} cells={cells} row={row} />})}
+    {grid.map((cells, row) => <Row key={`row${row}`} cells={cells} row={row} />)}
   </div>
 )
 

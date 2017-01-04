@@ -57,16 +57,16 @@ const invertRandCell = (grid) => {
 }
 
 export const startGame = () => (dispatch, getState) => {
-  dispatch(initGrid(10, 10))
+  dispatch(initGrid(5, 5))
   dispatch(setConfig({ score: 0 }))
   const startTime = new Date().getTime()
-  var counter = 1000
+  var counter = 500
   var myFunction = function(){
     setTimeout(() => {
       const { grid } = getState()
       dispatch(setConfig({ score: new Date().getTime() - startTime }))
       if (checkFullGrid(grid) === true) return;
-      counter -= 30
+      counter -= 5
       dispatch(markRandCell())
       myFunction()
     }, counter)
@@ -74,7 +74,7 @@ export const startGame = () => (dispatch, getState) => {
   myFunction()
 }
 
-const initialState = generateGrid(10, 10)
+const initialState = generateGrid(5, 5)
 
 export default (state = initialState, { type, grid, position }) => {
   switch(type) {
